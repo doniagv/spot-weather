@@ -16,9 +16,10 @@ export default function Home() {
 
   const changeHandler = async (e) => {
     setLocation(e.target.value);
+    console.log(process.env.API_KEY);
     await axios
       .get(
-        `http://api.weatherapi.com/v1/search.json?key=${process.env.weatherKey}&q=${e.target.value}`
+        `http://api.weatherapi.com/v1/search.json?key=${process.env.API_KEY}&q=${e.target.value}`
       )
       .then(
         (response) => {
@@ -38,7 +39,7 @@ export default function Home() {
   const onSearch = async () => {
     await axios
       .get(
-        `http://api.weatherapi.com/v1/current.json?key=${process.env.weatherKey}&q=${location}&aqi=no`
+        `http://api.weatherapi.com/v1/current.json?key=${process.env.API_KEY}&q=${location}&aqi=no`
       )
       .then(
         (response) => {
