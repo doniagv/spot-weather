@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Head from "next/head";
-import Image from "next/image";
 import { WeatherCard } from "../components/WeatherCard";
 import { Input, AutoComplete } from "antd";
 
@@ -16,10 +15,9 @@ export default function Home() {
 
   const changeHandler = async (e) => {
     setLocation(e.target.value);
-    console.log(process.env.API_KEY);
     await axios
       .get(
-        `http://api.weatherapi.com/v1/search.json?key=${process.env.API_KEY}&q=${e.target.value}`
+        `http://api.weatherapi.com/v1/search.json?key=${process.env.WEATHER_KEY}&q=${e.target.value}`
       )
       .then(
         (response) => {
@@ -39,7 +37,7 @@ export default function Home() {
   const onSearch = async () => {
     await axios
       .get(
-        `http://api.weatherapi.com/v1/current.json?key=${process.env.API_KEY}&q=${location}&aqi=no`
+        `http://api.weatherapi.com/v1/current.json?key=${process.env.WEATHER_KEY}&q=${location}&aqi=no`
       )
       .then(
         (response) => {
