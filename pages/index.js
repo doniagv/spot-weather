@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Head from "next/head";
 import { WeatherCard } from "../components/WeatherCard";
-import { Input, AutoComplete, Divider, Popover, Button } from "antd";
-import { TestKey } from "../components/TestKey";
-
-import "antd/dist/antd.css";
+import { Input, AutoComplete } from "antd";
 
 export default function Home() {
   const [data, setData] = useState();
@@ -17,10 +14,11 @@ export default function Home() {
   const weatherKey = process.env.NEXT_PUBLIC_WEATHER_KEY;
 
   const changeHandler = async (e) => {
+    console.log(e.target.value);
     setLocation(e.target.value);
     await axios
       .get(
-        `http://api.weatherapi.com/v1/search.json?key=${process.env.WEATHER_KEY}&q=${e.target.value}`
+        `http://api.weatherapi.com/v1/search.json?key=${weatherKey}&q=${e.target.value}`
       )
       .then(
         (response) => {
@@ -38,9 +36,10 @@ export default function Home() {
   };
 
   const onSearch = async () => {
+    console.log(location);
     await axios
       .get(
-        `http://api.weatherapi.com/v1/current.json?key=${process.env.WEATHER_KEY}&q=${location}&aqi=no`
+        `http://api.weatherapi.com/v1/current.json?key=${weatherKey}&q=${location}&aqi=no`
       )
       .then(
         (response) => {
@@ -78,13 +77,6 @@ export default function Home() {
       </Head>
 
       <main>
-        <Divider plain>Hi</Divider>
-        <h1>Spotweather</h1>
-        <TestKey weatherKey={weatherKey} />
-        <Popover content="This is a popover" title="Title">
-          <Button type="primary">Hover me</Button>
-        </Popover>
-
         {data && !errorMessage ? (
           <WeatherCard data={data} />
         ) : (
