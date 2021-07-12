@@ -14,41 +14,21 @@ export const WeatherCard = (props) => {
       }
     >
       <div className={styles.TemperatureSection}>
-        <p className={styles.ConditionText}>{props.condition}</p>
-        <p className={styles.TempC}>{props.tempC}°</p>
+        <p className={styles.ConditionText}>
+          {props.data.current.condition.text}
+        </p>
+        <p className={styles.TempC}>{props.data.current.temp_c}°</p>
       </div>
       <div className={styles.DateSection}>
-        <p className={styles.TextTime}>{props.curDate}</p>
+        <p className={styles.TextTime}>{currentDate}</p>
         <p className={styles.LocationText}>
           <MdLocationOn />
-          {props.loc}
+          {props.data.location.name}
         </p>
+      </div>
+      <div className={styles.IconSection}>
+        <img src={props.data.current.condition.icon} />
       </div>
     </div>
   );
-
-  // return (
-  //   <div
-  //     className={
-  //       conditionText.includes("rain") ? styles.CardCloudy : styles.Card
-  //     }
-  //   >
-  //     <div className={styles.TemperatureSection}>
-  //       <p className={styles.ConditionText}>
-  //         {props.data.current.condition.text}
-  //       </p>
-  //       <p className={styles.TempC}>{props.data.current.temp_c}°</p>
-  //     </div>
-  //     <div className={styles.DateSection}>
-  //       <p className={styles.TextTime}>{currentDate}</p>
-  //       <p className={styles.LocationText}>
-  //         <MdLocationOn />
-  //         {props.data.location.name}
-  //       </p>
-  //     </div>
-  //     <div className={styles.IconSection}>
-  //       <img src={props.data.current.condition.icon} />
-  //     </div>
-  //   </div>
-  // );
 };

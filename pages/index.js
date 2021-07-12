@@ -3,6 +3,7 @@ import axios from "axios";
 import Head from "next/head";
 import { WeatherCard } from "../components/WeatherCard";
 import { Input, AutoComplete } from "antd";
+import { TestKey } from "../components/TestKey";
 
 import "antd/dist/antd.css";
 
@@ -13,12 +14,7 @@ export default function Home() {
   const [suggestions, setSuggestions] = useState([]);
   const [options, setOptions] = useState([]);
 
-  const testData = {
-    condition: "Rain",
-    tempC: "23°",
-    curDate: "Fri, 20 june 2021",
-    loc: "México",
-  };
+  const weatherKey = process.env.NEXT_PUBLIC_WEATHER_KEY;
 
   const changeHandler = async (e) => {
     setLocation(e.target.value);
@@ -83,9 +79,10 @@ export default function Home() {
 
       <main>
         <h1>Spotweather</h1>
+        <TestKey weatherKey={weatherKey} />
 
         {data && !errorMessage ? (
-          <WeatherCard data={testData} />
+          <WeatherCard data={data} />
         ) : (
           <p className="error-message">{errorMessage}</p>
         )}
