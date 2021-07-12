@@ -13,6 +13,13 @@ export default function Home() {
   const [suggestions, setSuggestions] = useState([]);
   const [options, setOptions] = useState([]);
 
+  const testData = {
+    condition: "Rain",
+    tempC: "23°",
+    curDate: "Fri, 20 june 2021",
+    loc: "México",
+  };
+
   const changeHandler = async (e) => {
     setLocation(e.target.value);
     await axios
@@ -78,7 +85,7 @@ export default function Home() {
         <h1>Spotweather</h1>
 
         {data && !errorMessage ? (
-          <WeatherCard data={data} />
+          <WeatherCard data={testData} />
         ) : (
           <p className="error-message">{errorMessage}</p>
         )}
