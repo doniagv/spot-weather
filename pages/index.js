@@ -18,7 +18,7 @@ export default function Home() {
     setLocation(e.target.value);
     await axios
       .get(
-        `http://api.weatherapi.com/v1/search.json?key=${weatherKey}&q=${e.target.value}`
+        `https://api.weatherapi.com/v1/search.json?key=${weatherKey}&q=${e.target.value}`
       )
       .then(
         (response) => {
@@ -39,7 +39,7 @@ export default function Home() {
     console.log(location);
     await axios
       .get(
-        `http://api.weatherapi.com/v1/current.json?key=${weatherKey}&q=${location}&aqi=no`
+        `https://api.weatherapi.com/v1/current.json?key=${weatherKey}&q=${location}&aqi=no`
       )
       .then(
         (response) => {
@@ -77,6 +77,7 @@ export default function Home() {
       </Head>
 
       <main>
+        <h1>Spotweather</h1>
         {data && !errorMessage ? (
           <WeatherCard data={data} />
         ) : (
