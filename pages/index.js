@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Head from "next/head";
 import { WeatherCard } from "../components/WeatherCard";
-import { Input, AutoComplete } from "antd";
+import { Input, AutoComplete, Divider, Popover, Button } from "antd";
 import { TestKey } from "../components/TestKey";
 
 import "antd/dist/antd.css";
@@ -14,13 +14,13 @@ export default function Home() {
   const [suggestions, setSuggestions] = useState([]);
   const [options, setOptions] = useState([]);
 
-  const weatherKey = process.env.NEXT_PUBLIC_WEATHER_KEY;
+  const weatherKey = process.env.WEATHER_KEY;
 
   const changeHandler = async (e) => {
     setLocation(e.target.value);
     await axios
       .get(
-        `http://api.weatherapi.com/v1/search.json?key=${process.env.NEXT_PUBLIC_WEATHER_KEY}&q=${e.target.value}`
+        `http://api.weatherapi.com/v1/search.json?key=${process.env.WEATHER_KEY}&q=${e.target.value}`
       )
       .then(
         (response) => {
@@ -40,7 +40,7 @@ export default function Home() {
   const onSearch = async () => {
     await axios
       .get(
-        `http://api.weatherapi.com/v1/current.json?key=${process.env.NEXT_PUBLIC_WEATHER_KEY}&q=${location}&aqi=no`
+        `http://api.weatherapi.com/v1/current.json?key=${process.env.WEATHER_KEY}&q=${location}&aqi=no`
       )
       .then(
         (response) => {
@@ -78,8 +78,12 @@ export default function Home() {
       </Head>
 
       <main>
+        <Divider plain>Hi</Divider>
         <h1>Spotweather</h1>
         <TestKey weatherKey={weatherKey} />
+        <Popover content={content} title="Title">
+          <Button type="primary">Hover me</Button>
+        </Popover>
 
         {data && !errorMessage ? (
           <WeatherCard data={data} />
