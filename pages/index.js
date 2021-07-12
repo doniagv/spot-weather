@@ -81,7 +81,7 @@ export default function Home() {
         <Divider plain>Hi</Divider>
         <h1>Spotweather</h1>
         <TestKey weatherKey={weatherKey} />
-        <Popover content={content} title="Title">
+        <Popover content="This is a popover" title="Title">
           <Button type="primary">Hover me</Button>
         </Popover>
 
