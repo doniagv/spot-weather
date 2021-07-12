@@ -11,7 +11,7 @@ export default function Home() {
   const [suggestions, setSuggestions] = useState([]);
   const [options, setOptions] = useState([]);
 
-  const weatherKey = process.env.NEXT_PUBLIC_WEATHER_KEY;
+  const weatherKey = process.env.WEATHER_KEY;
 
   const changeHandler = async (e) => {
     console.log(e.target.value);
