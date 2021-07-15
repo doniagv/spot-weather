@@ -1,9 +1,10 @@
 import Head from "next/head";
 import WeatherSection from "../components/WeatherSection";
+import Navbar from "../components/Navbar/Navbar";
 
 export default function Home() {
   return (
-    <div className="container">
+    <>
       <Head>
         <title>Spotweather</title>
         <link rel="icon" href="/favicon.ico" />
@@ -18,15 +19,18 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-      <WeatherSection />
-      <footer>
-        <p>
-          Spotweather | Andoni Technology | Powered by
-          <a href="https://www.weatherapi.com/" title="Free Weather API">
-            WeatherAPI.com
-          </a>
-        </p>
-      </footer>
-    </div>
+      <Navbar />
+      <div className="container">
+        <WeatherSection />
+        <footer>
+          <p>
+            Spotweather | Andoni Technology | Powered by
+            <a href="https://www.weatherapi.com/" title="Free Weather API">
+              WeatherAPI.com
+            </a>
+          </p>
+        </footer>
+      </div>
+    </>
   );
 }

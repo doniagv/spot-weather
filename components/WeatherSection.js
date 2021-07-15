@@ -69,10 +69,11 @@ const WeatherSection = () => {
       <AutoComplete
         options={options}
         onSelect={onSelect}
-        dropdownMatchSelectWidth={300}
+        dropdownMatchSelectWidth={400}
         style={{
           fontWeight: "bold",
           margin: 50,
+          width: 400,
         }}
       >
         <Input.Search
