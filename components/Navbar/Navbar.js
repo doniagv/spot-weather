@@ -7,10 +7,6 @@ const Navbar = () => {
       <div className={styles.NavLogo}>
         <WiSunset />
       </div>
-
-      <div>
-        <button className={styles.NavButton}>Log in</button>
-      </div>
     </div>
   );
 };

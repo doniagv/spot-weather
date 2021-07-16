@@ -1,6 +1,6 @@
 .Card {
   max-width: 700px;
-  height: 180px;
+  min-height: auto;
   border-radius: 20px;
   background-color: #c06c84;
   /* background-image: linear-gradient(45deg, #fbda61 0%, #ff5acd 100%); */
@@ -53,21 +53,21 @@
 
 .TextTime {
   font-weight: 300;
-  font-size: 1.3rem;
+  font-size: 1.3em;
   padding: 0;
   margin: 0;
 }
 
 .LocationText {
-  font-size: 2rem;
+  font-size: 2em;
   font-weight: 600;
   padding: 1rem;
   margin: 0;
 }
 
 .CardRain {
-  width: 700px;
-  height: 180px;
+  max-width: 700px;
+  max-height: 180px;
   border-radius: 20px;
   background-color: #21d4fd;
   background-image: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
@@ -80,8 +80,8 @@
 }
 
 .CardCloudy {
-  width: 700px;
-  height: 180px;
+  max-width: 700px;
+  max-height: 180px;
   border-radius: 20px;
   background-color: #8bc6ec;
   background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
@@ -90,4 +90,38 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   align-items: center;
+}
+
+@media screen and (max-width: 510px) {
+  .Card {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    width: 100%;
+  }
+
+  .CardCloudy {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    width: 100%;
+  }
+
+  .CardRain {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    width: 100%;
+  }
+  .TemperatureSection {
+    border: none;
+    padding-left: 0;
+  }
+  .IconSection {
+    padding: 0;
+  }
+
+  .LocationText {
+    padding: 0;
+  }
 }
