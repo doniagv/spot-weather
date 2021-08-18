@@ -31,22 +31,33 @@ const WeatherSection = () => {
   };
 
   const onSearch = async () => {
-    console.log(location);
-    await axios
-      .get(
+    try {
+      const response = await axios.get(
         `https://api.weatherapi.com/v1/current.json?key=${weatherKey}&q=${location}&aqi=no`
-      )
-      .then(
-        (response) => {
-          setData(response.data);
-          setErrorMessage(null);
-        },
-        (error) => {
-          if (error.response) {
-            setErrorMessage(error.response.data.error.message);
-          }
-        }
       );
+      setData(response.data);
+      setErrorMessage(null);
+    } catch (error) {
+      if (error.response) {
+        setErrorMessage(error.response.data.error.message);
+      }
+    }
+
+    // await axios
+    //   .get(
+    //     `https://api.weatherapi.com/v1/current.json?key=${weatherKey}&q=${location}&aqi=no`
+    //   )
+    //   .then(
+    //     (response) => {
+    //       setData(response.data);
+    //       setErrorMessage(null);
+    //     },
+    //     (error) => {
+    //       if (error.response) {
+    //         setErrorMessage(error.response.data.error.message);
+    //       }
+    //     }
+    //   );
   };
 
   const onSelect = (value) => {
