@@ -13,25 +13,21 @@ const WeatherSection = () => {
   const weatherKey = process.env.WEATHER_KEY;
 
   const changeHandler = async (e) => {
-    console.log(e.target.value);
-    setLocation(e.target.value);
-    await axios
-      .get(
-        `https://api.weatherapi.com/v1/search.json?key=${weatherKey}&q=${e.target.value}`
-      )
-      .then(
-        (response) => {
-          setSuggestions(response.data);
-          const options = suggestions.map((row) => {
-            return { value: row.name };
-          });
-          setOptions(options);
-        },
-        (error) => {
-          console.log(error);
-        }
+    const newLocation = e.target.value;
+    setLocation(newLocation);
+    try {
+      const response = await axios.get(
+        `https://api.weatherapi.com/v1/search.json?key=${weatherKey}&q=${location}`
       );
-    console.log(options);
+      const newSuggestions = response.data;
+      setSuggestions(newSuggestions);
+      const options = suggestions.map((row) => {
+        return { value: row.name };
+      });
+      setOptions(options);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const onSearch = async () => {
