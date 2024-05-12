@@ -1,7 +1,7 @@
 import { WiSunset } from "react-icons/wi";
 import styles from "./Navbar.module.css";
 
-const Navbar = () => {
+export default function Navbar() {
   return (
     <div className={styles.NavBar}>
       <div className={styles.NavLogo}>
@@ -9,6 +9,4 @@ const Navbar = () => {
       </div>
     </div>
   );
-};
-
-export default Navbar;
+}
